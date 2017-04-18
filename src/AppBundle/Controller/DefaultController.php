@@ -18,6 +18,7 @@ class DefaultController extends Controller
                      ->getManager()
                      ->getRepository('AppBundle\Entity\Post');
         $qb = $repo->createQueryBuilder('p');
+        $qb->orderBy('p.datePosted', 'DESC');
         $posts = $qb->getQuery()->getResult();
         
         // Get the events
