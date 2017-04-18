@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Authors
+{% endblock %}
+
+{% block head %}
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="{{ asset('js/index/ie/html5shiv.js') }}"></script><![endif]-->
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/index/main.css') }}" />
+	<!--[if lte IE 9]><link rel="stylesheet" href="{{ asset('css/index/ie9.css') }}" /><![endif]-->
+	<!--[if lte IE 8]><link rel="stylesheet" href="{{ asset('css/index/ie8.css') }}" /><![endif]-->
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}" />
+{% endblock %}
+
+{% block javascripts %}
+    <!-- Scripts -->
+	<script src="{{ asset('js/index/skel.min.js') }}"></script>
+	<script src="{{ asset('js/index/util.js') }}"></script>
+	<!--[if lte IE 8]><script src="{{ asset('js/index/ie/respond.min.js') }}"></script><![endif]-->
+	<script src="{{ asset('js/index/main.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<body class="single">
+	<!-- Wrapper -->
+	<div id="wrapper">
+        {% include 'components/header.html.twig' %}
+        {% include 'components/menu.html.twig' %}
+
+		<!-- Main -->
+		<div id="main">
+			<!-- Post -->
+            {% if is_granted("ROLE_ADMIN") %}
+                <a href={{ path('new_post') }} class="button big new_post_button"> New Post </a>
+            {% endif %}
+            {% for author in authors %}
+    			<article class="profile">
+                    <img class="profile_image" src="{{ asset(author.profilePhoto) }}" />
+                    <div class="profile_info">
+                        <h1 class="profile_name"> {{ author.name }} </h1> 
+                        <h3 class="profile_email"> {{ author.email }} </h3>
+                        <h2> Posts </h2>
+                        <p>
+                            {% for post in author.posts %}
+                                <a 
+                                    class="post_title"
+                                    href="{{ path('post_view', {'post_id' : post.id }) }}">
+                                    {{ post.title }}
+                                </a> <br />
+                            {% endfor %}
+                        </p>
+                    </div>
+    			</article>
+            {% endfor %}
+		</div>
+        {% include 'components/footer.html.twig' %}
+	</div>
+</div>
+{% endblock body %}

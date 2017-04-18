@@ -1,0 +1,124 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    About ACM at UCR
+{% endblock %}
+
+{% block head %}
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="{{ asset('js/index/ie/html5shiv.js') }}"></script><![endif]-->
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/index/main.css') }}" />
+	<!--[if lte IE 9]><link rel="stylesheet" href="{{ asset('css/index/ie9.css') }}" /><![endif]-->
+	<!--[if lte IE 8]><link rel="stylesheet" href="{{ asset('css/index/ie8.css') }}" /><![endif]-->
+    <link rel="stylesheet" href="{{ asset('css/index/about.css') }}" />
+{% endblock %}
+
+{% block javascripts %}
+    <!-- Scripts -->
+	<script src="{{ asset('js/index/skel.min.js') }}"></script>
+	<script src="{{ asset('js/index/util.js') }}"></script>
+	<!--[if lte IE 8]><script src="{{ asset('js/index/ie/respond.min.js') }}"></script><![endif]-->
+	<script src="{{ asset('js/index/main.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<body class="single">
+	<!-- Wrapper -->
+	<div id="wrapper">
+        {% include 'components/header.html.twig' %}
+        {% include 'components/menu.html.twig' %}
+
+		<!-- Main -->
+		<div id="main">
+			<!-- Post -->
+			<article class="post">
+                <h1 class="text-center"> ACM at UCR Board </h1>
+                <div class="profiles">
+                    <div class="board-member">
+                        <img class="profile-photo" src="{{ asset('img/board/calvin.jpg') }}" />
+                        <h3> Calvin Kwan </h2>
+                        <span class="title"> President </span> 
+                        <br />
+                        <a class="email" href="mailto:calvinkwan@acmucr.org"> calvinkwan@acmucr.org </a>
+                    </div>
+                    <div class="board-member">
+                        <img class="profile-photo" src="{{ asset('img/board/kyle.jpg') }}" />
+                        <h3> Kyle Minshall </h2>
+                        <span class="title"> Vice-President </h3>
+                        <br />
+                        <a class="email" href="mailto:kyleminshall@acmucr.org"> kyleminshall@acmucr.org </a>
+                    </div>
+                    <div class="board-member">
+                        <img class="profile-photo" src="{{ asset('img/board/john.jpg') }}" />
+                        <h3> John Pham </h2>
+                        <span class="title"> Treasurer </h3>
+                        <br />
+                        <a class="email" href="mailto:john@acmucr.org"> john@acmucr.org </a>
+                    </div>
+                    <div class="board-member">
+                        <img class="profile-photo" src="{{ asset('img/board/arav.jpg') }}" />
+                        <h3> Arav Batra </h2>
+                        <span class="title"> Secretary </h3>
+                        <br />
+                        <a class="email" href="mailto:aravbatra@acmucr.org"> aravbatra@acmucr.org </a>
+                    </div>
+                    <div class="board-member">
+                        <img class="profile-photo" src="{{ asset('img/board/tai.jpg') }}" />
+                        <h3> Taimaru Provensal </h2>
+                        <span class="title"> Marketing </h3>
+                        <br />
+                        <a class="email" href="mailto:taimaru@acmucr.org"> taimaru@acmucr.org </a>
+                    </div>
+                    <div class="board-member">
+                        <img class="profile-photo" src="{{ asset('img/board/kat.jpg') }}" />
+                        <h3> Katherine Way </h2>
+                        <span class="title"> Membership </h3>
+                        <br />
+                        <a class="email" href="mailto:katherineway@acmucr.org"> katherineway@acmucr.org </a>
+                    </div>
+                    <div class="board-member">
+                        <img class="profile-photo" src="{{ asset('img/board/henry.jpg') }}" />
+                        <h3> Henry Doan </h2>
+                        <span class="title"> Professional Development </h3>
+                        <br />
+                        <a class="email" href="mailto:henrydoan@acmucr.org"> henrydoan@acmucr.org </a>
+                    </div>
+                    <div class="board-member">
+                        <img class="profile-photo" src="{{ asset('img/board/jacob.jpg') }}" />
+                        <h3> Jacob Poole </h2>
+                        <span class="title"> Outreach </h3>
+                        <br />
+                        <a class="email" href="mailto:jacobpoole@acmucr.org"> jacobpoole@acmucr.org </a>
+                    </div>
+                    <div class="board-member">
+                        <img class="profile-photo" src="{{ asset('img/board/joel.jpg') }}" />
+                        <h3> Joel Gomez </h2>
+                        <span class="title"> Hacknight Coordinator </h3>
+                        <br />
+                        <a class="email" href="mailto:joelgomez@acmucr.org"> joelgomez@acmucr.org </a>
+                    </div>
+                    <div class="board-member">
+                        <img class="profile-photo" src="{{ asset('img/board/elijah.jpg') }}" />
+                        <h3> Elijah Marchese </h2>
+                        <span class="title"> Fundraising Coordinator </h3>
+                        <br />
+                        <a class="email" href="mailto:emarc004@acmucr.org"> emarc004@acmucr.org </a>
+                    </div>
+                    <div class="board-member">
+                        <img class="profile-photo" src="{{ asset('img/board/kevin.jpg') }}" />
+                        <h3> Kevin Hsieh </h2>
+                        <span class="title"> Citrus Hack Coordinator </h3>
+                        <br />
+                        <a class="email" href="mailto:kevinhsieh@acmucr.org"> kevinhsieh@acmucr.org </a>
+                    </div>
+                </div>
+			</article>
+		</div>
+        {% include 'components/footer.html.twig' %}
+	</div>
+</div>
+{% endblock body %}

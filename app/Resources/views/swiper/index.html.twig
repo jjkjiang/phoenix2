@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    ACM at UCR | CardSwiper
+{% endblock %}
+
+{% block head %}
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.1/foundation.min.css" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('css/swiper.css') }}" />
+{% endblock %}
+
+{% block javascripts %}
+    <!-- Scripts -->
+    <script src="{{ asset('js/swiper.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.1.1/foundation.min.js"></script>
+{% endblock %}
+
+{% block body %}
+<body class="single">
+	<!-- Wrapper -->
+	<div id="wrapper">
+		<!-- Main -->
+        <div><a href="{{ path('admin_home') }}"><button class="logout">Home</button></a></div>
+        <div class="row">
+            <div class="medium-10 medium-centered small-12 columns">
+                <img class="ucr_logo" src="{{ asset('img/acm-ucr.png') }}"></img>
+                <div class="form_input">
+                    <form class='swipe_form'>
+                        <h2>Swipe R'Card!</h2>
+                        <input type="password" class="card_swipe_input"autofocus />
+                        <h4 class="message"></h4>
+                        <h4 class="error"></h4>
+                        <h4 class="warning"></h4>
+                        <img class="loading" src="{{ asset('img/loading.gif') }}" height="50px" width="50px" />
+                    </form>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+{% endblock body %}

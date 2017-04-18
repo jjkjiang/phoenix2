@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Registration
+{% endblock %}
+
+{% block head %}
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="{{ asset('js/index/ie/html5shiv.js') }}"></script><![endif]-->
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/index/main.css') }}" />
+	<!--[if lte IE 9]><link rel="stylesheet" href="{{ asset('css/index/ie9.css') }}" /><![endif]-->
+	<!--[if lte IE 8]><link rel="stylesheet" href="{{ asset('css/index/ie8.css') }}" /><![endif]-->
+    <link rel="stylesheet" href="{{ asset('css/registration.css') }}" />
+{% endblock %}
+
+{% block javascripts %}
+    <!-- Scripts -->
+	<script src="{{ asset('js/index/skel.min.js') }}"></script>
+	<script src="{{ asset('js/index/util.js') }}"></script>
+	<!--[if lte IE 8]><script src="{{ asset('js/index/ie/respond.min.js') }}"></script><![endif]-->
+	<script src="{{ asset('js/index/main.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<body class="single">
+	<!-- Wrapper -->
+	<div id="wrapper">
+        {% include 'components/header.html.twig' %}
+        {% include 'components/menu.html.twig' %}
+
+		<!-- Main -->
+		<div id="main">
+			<!-- Post -->
+			<article class="post">
+                <h1> Registration </h1>
+                <div class="registration_form">
+                    {{ form_start(form) }}
+                        {{ form_row(form.name, { value: student.name, attr: { readonly: true } }) }}
+                        <hr />
+                        {{ form_row(form.email, { value: student.email, attr: { readonly: true } }) }}
+                        <hr />
+                        {{ form_row(form.plainPassword.first, { attr: { autofocus: true} }) }}
+                        {{ form_row(form.plainPassword.second) }}
+                        <hr />
+                        {{ form_row(form.cardNumber, { value: student.cardNumber, attr: { readonly: true } }) }}
+                        {{ form_row(form.shirtSize) }}
+                        <hr />
+                        <button type="submit">Register!</button>
+                    {{ form_end(form) }}
+                </div>
+			</article>
+		</div>
+        {% include 'components/footer.html.twig' %}
+	</div>
+</div>
+{% endblock body %}

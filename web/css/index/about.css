@@ -1,0 +1,42 @@
+.profiles {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  
+  flex-flow: row wrap; 
+  flex-wrap: wrap;
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.board-member {
+  display: block;
+  flex: 0 1 300px;
+  text-align: center;
+}
+
+.profile-photo {
+  display: block;
+  border-radius: 100%;
+  margin: 20px auto;
+  width: 200px;
+  height: auto;
+}
+
+h3 {
+  margin: 0;
+}
+
+.title {
+  font-size: 1.2rem;
+  color: 888;
+}
+
+.email {
+  font-size: 1rem;
+  color: #4788F0;
+  text-decoration: none;
+  border-bottom: none;
+}

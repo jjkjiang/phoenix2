@@ -1,0 +1,29 @@
+<!-- Header -->
+<header id="header">
+	<h1><a href="/">ACM at UCR</a></h1>
+	<nav class="links">
+		<ul>
+			<li><a href="{{ path('events') }}">Events</a></li>
+			<li><a href="{{ path('officers') }}">Officers</a></li>
+            <li><a href="{{ path('contact') }}">Contact Us</a></li>
+            <li><a href="{{ path('about') }}">About Us</a></li>
+		</ul>
+	</nav>
+	<nav class="main">
+		<ul>
+            {% if is_granted("ROLE_ADMIN") %}
+    		<li>
+    			<a class="fa-gavel" href="{{ path('admin_home') }}" title="Admin">Admin</a>
+    		</li>
+            {% endif %}
+            {% if not app.user %}
+			<li class="login">
+				<a class="fa-user" href="{{ path('login') }}" title="Login">Login</a>
+			</li>
+            {% endif %}
+			<li class="menu">
+				<a class="fa-bars" href="#menu" title="Menu">Menu</a>
+			</li>
+		</ul>
+	</nav>
+</header>

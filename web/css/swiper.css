@@ -1,0 +1,65 @@
+html, body {
+    background-color: #FEFEFE;
+}
+
+.form_input {
+    background-color: #2D6CC1;
+    padding: 40px;
+    height: 250px;
+    margin-top: 40px;
+}
+
+.ucr_logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 300px;
+  width: auto;
+  padding-top: 20px;
+}
+
+.swipe_form {
+    color: #fff;
+}
+
+.card_swipe_input {
+    margin-top: 15px;
+}
+
+.message {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    margin: 10px 0px;
+    padding:12px;
+    font-size: 16px;
+}
+
+.error {
+    color: #D8000C;
+    background-color: #FFBABA;
+    margin: 10px 0px;
+    padding:12px;
+    font-size: 16px;
+}
+
+.warning {
+    color: #FFFFFF;
+    background-color: #FEB913;
+    margin: 10px 0px;
+    padding:12px;
+    font-size: 16px;
+}
+
+.logout {
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    background: #3498db;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+
+.logout:hover {
+    background: #3cb0fd;
+    text-decoration: none;
+}

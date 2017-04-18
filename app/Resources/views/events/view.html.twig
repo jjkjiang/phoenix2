@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ event.title }}
+{% endblock %}
+
+{% block head %}
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="{{ asset('js/index/ie/html5shiv.js') }}"></script><![endif]-->
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/index/main.css') }}" />
+	<!--[if lte IE 9]><link rel="stylesheet" href="{{ asset('css/index/ie9.css') }}" /><![endif]-->
+	<!--[if lte IE 8]><link rel="stylesheet" href="{{ asset('css/index/ie8.css') }}" /><![endif]-->
+    <link rel="stylesheet" href="{{ asset('css/post.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/event.css') }}" />
+{% endblock %}
+
+{% block javascripts %}
+    <!-- Scripts -->
+	<script src="{{ asset('js/index/skel.min.js') }}"></script>
+	<script src="{{ asset('js/index/util.js') }}"></script>
+	<!--[if lte IE 8]><script src="{{ asset('js/index/ie/respond.min.js') }}"></script><![endif]-->
+	<script src="{{ asset('js/index/main.js') }}"></script>
+    <script src="{{ asset('js/attendance.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<body class="single">
+	<!-- Wrapper -->
+	<div id="wrapper">
+        {% include 'components/header.html.twig' %}
+        {% include 'components/menu.html.twig' %}
+
+		<!-- Main -->
+		<div id="main">
+			<!-- Post -->
+            {% if is_granted("ROLE_ADMIN") %}
+                <a href={{ path('event_edit', { 'event_id' : event.id }) }} class="button big new_post_button"> Edit Event </a>
+                {% if event.attendees|length == 0 %}
+                    <form action="{{ path('event_take_attendance', { 'event_id': event.id }) }}" method="post">
+                        <button type="submit" class="button big new_post_button"> Take Attendance </button>
+                    </form>
+                {% endif %}
+            {% endif %}
+    		<article class="post">
+    			<header>
+    				<div class="title">
+    					<h2><a href="{{ path('event_view', { 'event_id' : event.id }) }}">{{ event.title }} </a></h2>
+                        <time class="published" datetime="{{ event.date|date("Y-m-d") }}"> {{ event.date | date("d M Y")}}</time>
+    				</div>
+    				<div class="meta">
+                        <img src="{{ asset( event.image ) }}" alt="" class="event_photo" />
+    				</div>
+    			</header>
+    			<div class="description">
+                    {{ event.description | markdown }}
+                </div>
+    		</article>
+		</div>
+        {% include 'components/footer.html.twig' %}
+	</div>
+</div>
+{% endblock body %}

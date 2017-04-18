@@ -1,0 +1,14 @@
+.pre_check_email {
+    width: 50%;
+    min-width: 500px;
+}
+
+.registration_form {
+    width: 50%;
+    min-width: 400px;
+}
+
+.error {
+    margin-top: 0;
+    color: #FF2A1A;
+}

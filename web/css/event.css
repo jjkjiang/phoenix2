@@ -1,0 +1,25 @@
+.post > header .meta {
+    padding: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-self: center;
+}
+
+.event_photo {
+    display: flex;
+    max-height: 100px;
+    width: auto;
+}
+
+.published {
+    font-size: 1.2rem;
+}
+
+.title {
+    padding-bottom: 15px !important;
+}
+
+.description {
+    font-size: 1.2rem;
+}

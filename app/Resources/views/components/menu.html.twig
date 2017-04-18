@@ -1,0 +1,44 @@
+<!-- Menu -->
+<section id="menu">
+	<!-- Links -->
+	<section>
+		<ul class="links">
+			<li>
+				<a href="{{ path('events') }}">
+					<h3>Events</h3>
+					<p>Find out about upcoming meetings and other events.</p>
+				</a>
+			</li>
+			<li>
+				<a href="{{ path('officers') }}">
+					<h3>Officers</h3>
+					<p>Get to know your ACM board! And please, come say hi!</p>
+				</a>
+			</li>
+			<li>
+				<a href="{{ path('contact') }}">
+					<h3>Contact</h3>
+					<p>Our Facebook page and email!</p>
+				</a>
+			</li>
+			<li>
+				<a href="{{ path('about') }}">
+					<h3>About Us</h3>
+					<p>What is ACM and who are we?</p>
+				</a>
+			</li>
+		</ul>
+	</section>
+
+	<!-- Actions -->
+	<section>
+		<ul class="actions vertical">
+            {% if not app.user %}
+			<li><a href="{{ path('login') }}" class="button big fit">Log In</a></li>
+            <li><a href="{{ path('pre_registration') }}" class="button big fit">Register</a></li>
+            {% else %}
+            <li><a href="{{ path('logout') }}" class="button big fit">Log Out</a></li>
+            {% endif %}
+		</ul>
+	</section>
+</section>

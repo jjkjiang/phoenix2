@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Registration Pre-Check
+{% endblock %}
+
+{% block head %}
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="{{ asset('js/index/ie/html5shiv.js') }}"></script><![endif]-->
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/index/main.css') }}" />
+	<!--[if lte IE 9]><link rel="stylesheet" href="{{ asset('css/index/ie9.css') }}" /><![endif]-->
+	<!--[if lte IE 8]><link rel="stylesheet" href="{{ asset('css/index/ie8.css') }}" /><![endif]-->
+    <link rel="stylesheet" href="{{ asset('css/registration.css') }}" />
+{% endblock %}
+
+{% block javascripts %}
+    <!-- Scripts -->
+	<script src="{{ asset('js/index/skel.min.js') }}"></script>
+	<script src="{{ asset('js/index/util.js') }}"></script>
+	<!--[if lte IE 8]><script src="{{ asset('js/index/ie/respond.min.js') }}"></script><![endif]-->
+	<script src="{{ asset('js/index/main.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<body class="single">
+	<!-- Wrapper -->
+	<div id="wrapper">
+        {% include 'components/header.html.twig' %}
+        {% include 'components/menu.html.twig' %}
+
+		<!-- Main -->
+		<div id="main">
+			<!-- Post -->
+			<article class="post">
+                <h1> Registration </h1>
+                <p>
+                    For policy reasons, we actually only let you regsiter to be
+                    a member of our website if you have attended a meeting 
+                    before.
+                </p>
+                <p>
+                    Enter your email into the form below which will pull from 
+                    our meeting attendance records to make sure you've attended
+                    at least one of our meetings! 
+                </p>
+                <p>
+                    If you have attended a meeting and you are still unable to
+                    register, 
+                    <a href="mailto:contact@acmucr.org">send us an email </a>.
+                </p>
+                <hr />
+                <h3> Check email </h3>
+                <form method="post" 
+                      class="pre_check_email"
+                      action="{{ path('pre_registration_check')}}">
+                    <input type="text" name="email" />
+                    <input type="submit">
+                </form>
+                {% if error is defined %}
+                    <span class="error">{{ error }}</span>
+                {% endif %}
+			</article>
+		</div>
+        {% include 'components/footer.html.twig' %}
+	</div>
+</div>
+{% endblock body %}

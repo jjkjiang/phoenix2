@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    About ACM at UCR
+{% endblock %}
+
+{% block head %}
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="{{ asset('js/index/ie/html5shiv.js') }}"></script><![endif]-->
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/index/main.css') }}" />
+	<!--[if lte IE 9]><link rel="stylesheet" href="{{ asset('css/index/ie9.css') }}" /><![endif]-->
+	<!--[if lte IE 8]><link rel="stylesheet" href="{{ asset('css/index/ie8.css') }}" /><![endif]-->
+{% endblock %}
+
+{% block javascripts %}
+    <!-- Scripts -->
+	<script src="{{ asset('js/index/skel.min.js') }}"></script>
+	<script src="{{ asset('js/index/util.js') }}"></script>
+	<!--[if lte IE 8]><script src="{{ asset('js/index/ie/respond.min.js') }}"></script><![endif]-->
+	<script src="{{ asset('js/index/main.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<body class="single">
+	<!-- Wrapper -->
+	<div id="wrapper">
+        {% include 'components/header.html.twig' %}
+        {% include 'components/menu.html.twig' %}
+
+		<!-- Main -->
+		<div id="main">
+			<!-- Post -->
+			<article class="post">
+                <h1> ACM at UCR </h1>
+                <p>
+                    There are multiple ways to get in touch with us!
+                </p>
+                <hr />
+                <h1> Facebook </h1>
+                <p>
+                    The best way to reach is is by using our 
+                    <a href="https://www.facebook.com/groups/acm.at.ucr/">Facebook page</a>!
+                </p>
+                <p>
+                    There you can participate in discussions, ask any questions
+                    that you might have, post cool articles, show off
+                    your cool projects, or anything! We'd love to get to know
+                    you more! 
+                </p>
+                <h />
+                <h1> Email </h1>
+                <p>
+                    If you'd rather contact the board directly, you of course
+                    can always reach us at our email
+                    <a href="mailto:contact@acmucr.org">contact@acmucr.org</a>.
+			</article>
+		</div>
+        {% include 'components/footer.html.twig' %}
+	</div>
+</div>
+{% endblock body %}

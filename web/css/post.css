@@ -1,0 +1,22 @@
+.new_post_button {
+    margin-bottom: 15px;
+}
+
+#preview {
+    padding: 5px;
+    background-color: #f0f0f0;
+}
+
+textarea {
+    resize: none;
+}
+
+select {
+    display: inline-block !important;
+    width: 100px;
+    margin: 0 5px;
+}
+
+.edit_list {
+    list-style: none;
+}

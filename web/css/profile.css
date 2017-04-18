@@ -1,0 +1,39 @@
+.profile {
+    padding: 3em 3em 1em 3em;
+    background: #ffffff;
+    border: solid 1px rgba(160, 160, 160, 0.3);
+    margin: 0 0 3em 0;
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.profile_info {
+    padding-left: 20px;
+    max-height: 100%;
+    float: left;
+}
+
+.profile_name {
+    font-size: 2rem;
+}
+
+.profile_email {
+    font-size: 1rem;
+    color: #777;
+    text-transform: lowercase;
+}
+
+.profile_image {
+    float: left;
+    margin: 15px;
+    max-height: 200px;
+    height: 30vw;
+    width: auto;
+    border-radius: 100%;
+    display: inline-block;
+}
+
+.post_title {
+    font-size: 1.2rem;
+}

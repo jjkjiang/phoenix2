@@ -1,0 +1,124 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    About ACM at UCR
+{% endblock %}
+
+{% block head %}
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="{{ asset('js/index/ie/html5shiv.js') }}"></script><![endif]-->
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/index/main.css') }}" />
+	<!--[if lte IE 9]><link rel="stylesheet" href="{{ asset('css/index/ie9.css') }}" /><![endif]-->
+	<!--[if lte IE 8]><link rel="stylesheet" href="{{ asset('css/index/ie8.css') }}" /><![endif]-->
+{% endblock %}
+
+{% block javascripts %}
+    <!-- Scripts -->
+	<script src="{{ asset('js/index/skel.min.js') }}"></script>
+	<script src="{{ asset('js/index/util.js') }}"></script>
+	<!--[if lte IE 8]><script src="{{ asset('js/index/ie/respond.min.js') }}"></script><![endif]-->
+	<script src="{{ asset('js/index/main.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<body class="single">
+	<!-- Wrapper -->
+	<div id="wrapper">
+        {% include 'components/header.html.twig' %}
+        {% include 'components/menu.html.twig' %}
+
+		<!-- Main -->
+		<div id="main">
+			<!-- Post -->
+			<article class="post">
+                <h1> ACM at UCR </h1>
+				<p>
+                    <strong>ACM at UCR</strong> is a professional student 
+                    organization focused on Computer Science and Engineering. 
+                    We help students develop the technical and communication 
+                    skills they need to get a job in industry. 
+                    Our mission is to help students succeed in getting the 
+                    opportunity for an internship or a full 
+                    time job by offering workshops and 
+                    events aimed towards that goal.
+                </p>
+                <p>
+                    Email: 
+                    <a href="mailto:contact@acmucr.org">contact@acmucr.org</a>
+                </p>
+                <hr />
+                <h1> When are your general meetings? </h1>
+				<p>
+                    Our general meetings take place every even week on 
+                    Mondays for the Spring quarter. 
+                    These meetings are held at 
+                    Bourns A265 from 7:00 PM - 8:00 PM.
+                </p>
+                <hr />
+                <h1> Where is your clubroom? </h1>
+				<p>
+                    Our clubroom is located on the first floor of
+                    Winston Chung Hall room 127. WCH 127! 
+                </p>
+                <hr />
+                <h1> How can I become a member? </h1>
+				<p>
+                    Visit WCH 127 and talk to one of our officers! 
+                    Any officer available will be able to 
+                    sign you up on our membership list.
+                    You can also find Katherine Way or John Pham's 
+                    contact information on our 
+                    <a href="{{ path('officers') }}">list of officers</a> 
+                    to set up an appointment. 
+                    The membership fee is $20. 
+                    This membership fee does <strong>not</strong> 
+                    apply to National ACM Membership.
+                </p>
+                <hr />
+                <h1>What are the benefits of becoming an ACM at UCR member?</h1>
+				<p>
+                    <ul>
+                        <li>Free T-Shirt!</li>
+                        <li>Priority Registration for limited space events</li>
+                        <li>Priority Workshop registration</li>
+                        <li>Ability attend tech tours</li>
+                        <li>Ability to get lockers</li>
+                        <li>Eligibility for points in the points system</li>
+                    </ul>
+                </p>
+                <hr />
+                <h1> How can I become more involved with ACM at UCR? </h1>
+				<p>
+                    You can be more involved with <strong>ACM at UCR</strong>
+                    simply by attending any of our events. 
+                    If you're interested in being on the board of ACM, 
+                    get in touch with Calvin Kwan or Kyle Minshall.
+                </p>
+                <hr />
+                <h1> What is the “Point System”? </h1>
+				<p>
+                    <strong>ACM at UCR</strong> assigns points to each 
+                    member who participates in any of our events. 
+                    This includes general meetings, 
+                    workshops, hangouts, and more! 
+                    Members with the most points have priority access to
+                    events, workshops, and tech tours!
+                </p>
+                <hr />
+                <h1> Is your question not here? </h1>
+                <p>
+                    Send us an email at 
+                    <a href="mailto:contact@acmucr.org">contact@acmucr.org</a>!
+                    <br />
+                    We'd love to hear from you! 
+                </p>
+			</article>
+		</div>
+        {% include 'components/footer.html.twig' %}
+	</div>
+</div>
+{% endblock body %}
