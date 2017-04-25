@@ -93,6 +93,7 @@ class RegistrationController extends Controller
                 ->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
             $user->setStudent($student);
+            $user->setRoles('ROLE_USER');
 
             // 4) Save the User!
             $em = $this->getDoctrine()->getManager();

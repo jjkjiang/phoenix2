@@ -64,7 +64,7 @@ function verify(dump) {
     }
     
     // Submit the extracted data to the database for checkin
-    $.post( "swiper/submit", { 
+    $.post( "/swiper/submit", { 
         s_id: s_id, 
         s_name: s_name, 
         card_number: card_number 
@@ -109,7 +109,7 @@ function submit_email(s_id, s_name, email, card_number) {
   var error_msg = $('.error');
   var info_msg = $('.message');
   
-  $.post( "swiper/enroll", { 
+  $.post( "/swiper/enroll", { 
       s_id: s_id, 
       s_name: s_name, 
       email: email, 

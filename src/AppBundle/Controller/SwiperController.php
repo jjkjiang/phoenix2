@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @Route("/swiper")
@@ -46,8 +47,6 @@ class SwiperController extends Controller
         } 
         
         $student->setCheckedIn(true);
-        
-        $em->persist($student);
         $em->flush();
         return new Response('', 200);
     }
