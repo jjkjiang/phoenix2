@@ -69,14 +69,14 @@ function verify(dump) {
         s_name: s_name, 
         card_number: card_number 
     }, function(data, status, xhr) {
-      if (status === 200) {
-        info_msg.text("Thank you for checking in, " + s_name + "!"); 
-        info_msg.show();
-        setTimeout(function() { 
-          info_msg.text("");
-          info_msg.hide(); 
-        }, 3000); // Hide checkin confirmation after 3 seconds
-      } else if (data === 420) {
+      info_msg.text("Thank you for checking in, " + s_name + "!"); 
+      info_msg.show();
+      setTimeout(function() { 
+        info_msg.text("");
+        info_msg.hide(); 
+      }, 3000); // Hide checkin confirmation after 3 seconds
+    }).fail(function(xhr, status, error) {
+      if (xhr.status === 420) {
         var email = window.prompt("Please enter your email address.", "");
         if(email === undefined || email === "") {
           error_msg.text("Error: Unable to check in. Please try again.");
@@ -84,7 +84,7 @@ function verify(dump) {
         } else {
           submit_email(s_id, s_name, email, card_number);
         }
-      } else if (status === 421) {
+      } else if (xhr.status === 421) {
         warning_msg.text("You have already checked in, " + s_name + ".");
         warning_msg.show();
         setTimeout(function() { 
@@ -95,11 +95,6 @@ function verify(dump) {
         error_msg.text("Error: Unable to check in. Please try again.");
         error_msg.show();
       }
-      spinner.hide();
-    }).fail(function() {
-      alert( "Error processing request. Please try again." );
-      error_msg.text("Server Error.");
-      error_msg.show();
       spinner.hide();
     });
   }
