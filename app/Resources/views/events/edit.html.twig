@@ -43,7 +43,7 @@
                     {{ form_row(edit_form.eventUrl) }}
                     {{ form_row(edit_form.date) }}
                     {{ form_row(edit_form.time, { attr: { placeholder: '14:30' } }) }}
-                    {{ form_row(edit_form.image) }}
+                    {{ form_row(edit_form.image, { required: false }) }}
                     {{ form_row(edit_form.description, { id : 'post_body', attr : { oninput : "this.editor.update()" }}) }}
                     <input type="submit" value="Save Changes" />
                 {{ form_end(edit_form) }}
@@ -52,7 +52,6 @@
                 {{ form_start(delete_form) }}
                     <input type="submit" value="Delete">
                 {{ form_end(delete_form) }}
-                </ul>
     		</article>
 		</div>
         {% include 'components/footer.html.twig' %}

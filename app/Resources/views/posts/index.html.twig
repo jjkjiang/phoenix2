@@ -44,6 +44,9 @@
                 </article>
             {% endif %}
             {% for post in posts %}
+                {% if is_granted("ROLE_ADMIN") %}
+                    <a href={{ path('post_edit', { 'post_id' : post.id }) }} class="button big new_post_button"> Edit Post </a>
+                {% endif %}
         		<article class="post">
         			<header>
         				<div class="title">

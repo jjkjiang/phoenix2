@@ -6,6 +6,7 @@ use AppBundle\Form\EventType;
 use AppBundle\Entity\Attendance;
 use AppBundle\Entity\Event;
 use AppBundle\Entity\User;
+use Doctrine\ORM\Query\ResultSetMapping;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -128,8 +129,18 @@ class EventController extends Controller
         $event = $em->getRepository('AppBundle\Entity\Event')
             ->find($event_id);
         
+        $query = $em->createQuery(
+            'SELECT s.name, s.email
+             FROM AppBundle\Entity\Attendance a
+             JOIN a.event e
+             JOIN a.attendee s
+             WHERE e.id = ?1 ');
+        $query->setParameter(1, $event_id);
+        $attendees = $query->getResult();     
+        
         return $this->render('attendance/event.html.twig', [
             'event' => $event,
+            'attendees' => $attendees,
         ]);
     }
     

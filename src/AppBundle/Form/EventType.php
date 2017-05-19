@@ -15,11 +15,17 @@ class EventType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $date = new \DateTime();
         $builder
             ->add('title', TextType::class)
             ->add('description', TextareaType::class)
             ->add('eventUrl', TextType::class)
-            ->add('date', DateType::class)
+            ->add('date', DateType::class, [
+                'years' => [
+                    $date->format('Y'), 
+                    (int)($date->format('Y'))+1
+                ]
+            ])
             ->add('time', TimeType::class, [
                 'widget' => 'single_text',
                 'label' => 'Time (24 hour format)',
