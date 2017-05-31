@@ -63,7 +63,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Rout("/activities", name="activities")
+     * @Route("/activities", name="activities")
      */
     public function activitiesAction(Request $request)
     {
