@@ -61,4 +61,12 @@ class DefaultController extends Controller
     {
         return $this->render('default/officers.html.twig');
     }
+
+    /**
+     * @Rout("/activities", name="activities")
+     */
+    public function activitiesAction(Request $request)
+    {
+        return $this->render('default/activities.html.twig');
+    }
 }
