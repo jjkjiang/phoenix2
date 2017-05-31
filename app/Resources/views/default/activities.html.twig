@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Activities ACM at UCR
+{% endblock %}
+
+{% block head %}
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="{{ asset('js/index/ie/html5shiv.js') }}"></script><![endif]-->
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/index/main.css') }}" />
+	<!--[if lte IE 9]><link rel="stylesheet" href="{{ asset('css/index/ie9.css') }}" /><![endif]-->
+	<!--[if lte IE 8]><link rel="stylesheet" href="{{ asset('css/index/ie8.css') }}" /><![endif]-->
+{% endblock %}
+
+{% block javascripts %}
+    <!-- Scripts -->
+	<script src="{{ asset('js/index/skel.min.js') }}"></script>
+	<script src="{{ asset('js/index/util.js') }}"></script>
+	<!--[if lte IE 8]><script src="{{ asset('js/index/ie/respond.min.js') }}"></script><![endif]-->
+	<script src="{{ asset('js/index/main.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<body class="single">
+	<!-- Wrapper -->
+	<div id="wrapper">
+        {% include 'components/header.html.twig' %}
+        {% include 'components/menu.html.twig' %}
+
+		<!-- Main -->
+		<div id="main">
+			<!-- Post -->
+			<article class="post">
+                <h1> Cutie Hack </h1>
+				<p>
+                    Cutie Hack is an annual 12-hour hackathon ACM hosts with
+                    IEEE in the Spring since 2015. We are growing the event 
+                    every year starting out with only 100 participants to now 
+                    over 250. The goal for Cutie Hack is to introduce
+                    beginners to the hackathon scene. 
+                </p>
+                <p>
+                    Website:: 
+                    <a href="http://cutiehack.com">www.cutiehack.com</a>
+                </p>
+                <hr />
+                <h1> Citrus Hack </h1>
+				<p>
+                    Citrus Hack is an annual 36-hour hackathon ACM hosts with
+                    IEEE in the Fall since 2015. Citrus Hack is our competitive
+                    hackathon where we invite students from all over the US to
+                    come participate. We started off hosting 200 participants
+                    and are now hosting over 600.
+                </p>
+                <p>
+                    Website:: 
+                    <a href="http://citrushack.com">www.citrushack.com</a>
+                </p>
+                <hr />
+			</article>
+		</div>
+        {% include 'components/footer.html.twig' %}
+	</div>
+</div>
+{% endblock body %}
