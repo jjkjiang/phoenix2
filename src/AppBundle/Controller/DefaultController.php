@@ -27,7 +27,9 @@ class DefaultController extends Controller
                      ->getRepository('AppBundle\Entity\Event');
         $qb = $repo->createQueryBuilder('e');
         $qb
-            ->where('e.date > :now')
+            //TODO: change to show events of the year
+            //->where('e.date > :now')
+            ->whereNotNull('e.date')
             ->setParameter(':now', new \DateTime('yesterday'))
             ->orderBy('e.date', 'ASC');
         $events = $qb->getQuery()->getResult();
