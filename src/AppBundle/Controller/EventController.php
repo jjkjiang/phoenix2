@@ -29,7 +29,7 @@ class EventController extends Controller
         
         $qb = $repo->createQueryBuilder('e');
         $qb
-            ->where('e.date > :now')
+            ->where('e.date != NULL')
             ->setParameter(':now', new \DateTime('yesterday'))
             ->orderBy('e.date', 'ASC');
         $events = $qb->getQuery()->getResult();
