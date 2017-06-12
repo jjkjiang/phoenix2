@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import requests, sys
+
 '''
 TODO:
 [ ] redirect test
@@ -37,3 +39,9 @@ with open(default_route, 'w') as file:
 }}""".format(route, route, route, url))
 
 print("Created http://acmucr.org/{} which points to {}".format(route, url))
+print("Now testing the url")
+request = requests.get(url)
+if request.status_code == 200:
+    print("We good")
+else:
+    print("Something went wrong, go check the DefaultController")
