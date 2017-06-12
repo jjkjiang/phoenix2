@@ -24,6 +24,11 @@ summary, time, mark, audio, video {
     vertical-align: baseline;
 }
 
+p > img {
+    max-width: 100%;
+    display: block;
+}
+
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
     display: block;
