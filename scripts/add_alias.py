@@ -20,8 +20,8 @@ if route in data:
     exit() 
 
 url = ""
-while "http://" not in url:
-    url = input("Enter the url to redirect to (needs http://): ")
+while ("http://" not in url) and ("https://" not in url):
+    url = input("Enter the url to redirect to (needs http(s)://): ")
 
 # deletes closing }
 data = data[:-2]
