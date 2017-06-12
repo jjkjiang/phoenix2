@@ -69,4 +69,19 @@ class DefaultController extends Controller
     {
         return $this->render('default/activities.html.twig');
     }
+    
+     /**
+     * @Route("/venmo", name="venmo")
+     */
+    public function venmo(Request $request)
+    {
+        return $this->redirect('https://venmo.com/ACMUCR');
+    }
+     /**
+     * @Route("/fb", name="fb")
+     */
+    public function fb(Request $request)
+    {
+        return $this->redirect('https://www.facebook.com/groups/acm.at.ucr/');
+    }
 }

@@ -29,9 +29,9 @@ class EventController extends Controller
         
         $qb = $repo->createQueryBuilder('e');
         $qb
-            ->where('e.date IS NOT NULL')
+            ->where('e.date != :now')
             ->setParameter(':now', new \DateTime('yesterday'))
-            ->orderBy('e.date', 'ASC');
+            ->orderBy('e.date', 'DESC');
         $events = $qb->getQuery()->getResult();
         
         return $this->render('events/index.html.twig', [
