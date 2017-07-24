@@ -20,7 +20,7 @@ class DefaultController extends Controller
         $qb = $repo->createQueryBuilder('p');
         $qb->orderBy('p.datePosted', 'DESC');
         $posts = $qb->getQuery()->getResult();
-        
+
         // Get the events
         $repo = $this->get('doctrine')
                      ->getManager()
@@ -31,13 +31,13 @@ class DefaultController extends Controller
             ->setParameter(':now', new \DateTime('yesterday'))
             ->orderBy('e.date', 'ASC');
         $events = $qb->getQuery()->getResult();
-        
+
         return $this->render('default/index.html.twig', [
             'posts' => $posts,
             'events' => $events,
         ]);
     }
-    
+
     /**
      * @Route("/about", name="about")
      */
@@ -45,7 +45,7 @@ class DefaultController extends Controller
     {
         return $this->render('default/about.html.twig');
     }
-    
+
     /**
      * @Route("/contact", name="contact")
      */
@@ -53,11 +53,11 @@ class DefaultController extends Controller
     {
         return $this->render('default/contact.html.twig');
     }
-    
+
     /**
      * @Route("/officers", name="officers")
      */
-    public function officersAction(Request $request) 
+    public function officersAction(Request $request)
     {
         return $this->render('default/officers.html.twig');
     }
@@ -69,7 +69,7 @@ class DefaultController extends Controller
     {
         return $this->render('default/activities.html.twig');
     }
-    
+
      /**
      * @Route("/venmo", name="venmo")
      */
@@ -83,5 +83,12 @@ class DefaultController extends Controller
     public function fb(Request $request)
     {
         return $this->redirect('https://www.facebook.com/groups/acm.at.ucr/');
+    }
+     /**
+     * @Route("/icpcbootcamp", name="icpcbootcamp")
+     */
+    public function icpcbootcamp(Request $request)
+    {
+        return $this->redirect('https://goo.gl/forms/ur5YQnChDKNAVvps2');
     }
 }
