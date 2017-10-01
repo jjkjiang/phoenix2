@@ -105,4 +105,12 @@ class DefaultController extends Controller
     {
         return $this->redirect('https://goo.gl/forms/WOdoWhl4O8VBos282');
     }
+
+    /**
+    * @Route("/incubator", name="incubator")
+    */
+    public function incubator(Request $request)
+    {
+        return $this->redirect('https://docs.google.com/document/d/1xKG3rjqUFuj_WnjKpoqQHeQP3hquP8xYX1rIx9yucbM/edit?usp=sharing');
+    }
 }
