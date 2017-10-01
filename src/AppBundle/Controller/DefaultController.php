@@ -91,4 +91,18 @@ class DefaultController extends Controller
     {
         return $this->redirect('https://goo.gl/forms/ur5YQnChDKNAVvps2');
     }
+     /**
+     * @Route("/mentor", name="mentor")
+     */
+    public function mentor(Request $request)
+    {
+        return $this->redirect('https://goo.gl/forms/rv1TcYbiVntUPOBu2');
+    }
+    /**
+     * @Route("/mentee", name="mentee")
+     */
+    public function mentee(Request $request)
+    {
+        return $this->redirect('https://goo.gl/forms/WOdoWhl4O8VBos282');
+    }
 }
