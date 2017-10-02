@@ -113,4 +113,11 @@ class DefaultController extends Controller
     {
         return $this->redirect('https://docs.google.com/document/d/1xKG3rjqUFuj_WnjKpoqQHeQP3hquP8xYX1rIx9yucbM/edit?usp=sharing');
     }
+    /**
+    * @Route("/officehours", name="officehours")
+    */
+    public function officehours(Request $request)
+    {
+        return $this->redirect('https://calendar.google.com/calendar/embed?src=ucr.edu_s81hcr5v7sgqhdvnhi2re01dkg%40group.calendar.google.com&ctz=America%2FLos_Angeles');
+    }
 }
