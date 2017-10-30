@@ -127,4 +127,12 @@ class DefaultController extends Controller
     {
         return $this->redirect('https://docs.google.com/forms/d/e/1FAIpQLSc4BxYshPRaPNbKAW4YSrQ_tXgsTVRSAWKb7NdeemKikqiRvA/viewform');
     }
+
+    /**
+    * @Route("/interviews", name="interviews")
+    */
+    public function interviews(Request $request)
+    {
+        return $this->redirect('https://docs.google.com/forms/d/e/1FAIpQLSf4udhYICi9aVrvDxu2NAK7nLznMvcLXnxO_KR8zb0L4540CA/viewform');
+    }
 }
