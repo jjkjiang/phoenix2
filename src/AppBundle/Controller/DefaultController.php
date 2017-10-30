@@ -120,4 +120,11 @@ class DefaultController extends Controller
     {
         return $this->redirect('https://calendar.google.com/calendar/embed?src=ucr.edu_s81hcr5v7sgqhdvnhi2re01dkg%40group.calendar.google.com&ctz=America%2FLos_Angeles');
     }
+    /**
+    * @Route("/resumebank", name="resumebank")
+    */
+    public function resumebank(Request $request)
+    {
+        return $this->redirect('https://docs.google.com/forms/d/e/1FAIpQLSc4BxYshPRaPNbKAW4YSrQ_tXgsTVRSAWKb7NdeemKikqiRvA/viewform');
+    }
 }
