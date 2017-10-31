@@ -41,7 +41,6 @@ class AdminController extends Controller
      */
     public function adminMakeAdminAction(Request $request)
     {
-
       $em = $this->get('doctrine')->getManager();
       $user_id = $request->request->get('user_id');
       $user = $em->getRepository('AppBundle\Entity\User')->find($user_id);
