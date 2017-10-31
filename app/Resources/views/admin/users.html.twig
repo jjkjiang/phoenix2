@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    ACM at UCR | Admin
+    ACM at UCR | Admin Users
 {% endblock %}
 
 {% block head %}
@@ -23,6 +23,7 @@
 	<script src="{{ asset('js/index/util.js') }}"></script>
 	<!--[if lte IE 8]><script src="{{ asset('js/index/ie/respond.min.js') }}"></script><![endif]-->
 	<script src="{{ asset('js/index/main.js') }}"></script>
+    <script src="{{ asset('js/admin/users.js') }}"></script>
 {% endblock %}
 
 {% block body %}
@@ -36,33 +37,34 @@
 		<div id="main">
 			<!-- Post -->
 			<article class="post">
-                <h1> Admin home! </h1>
+                <h1> Site User Accounts </h1>
                 <hr />
-                <h3> Posts </h3>
-                <p>
-                    <a href={{ path('event_new') }} class="button big new_post_button"> New Event </a>
-                    Create a new upcoming event. Before creating, make sure you have also made the event on Facebook.
-                </p>
-                <p>
-                    <a href={{ path('new_post') }} class="button big new_post_button"> New Post </a>
-                    Create a new post! 
-                </p>
-                <hr />
-                <h3> Events </h3>
-                <p>
-                    <a href={{ path('swiper_home') }} class="button big new_post_button"> Card Swiper </a>
-                    Take attendance for an event!
-                </p>
-                <p>
-                    <a href={{ path('events_attendance') }} class="button big new_post_button"> Attendance </a>
-                    See attendance for past events
-                </p>
-                <hr />
-                <h3> Users </h3>
-                <p>
-                    <a href={{ path('admin_users') }} class="button big new_post_button"> Users </a>
-                    See user info pages as well as manage permissions. 
-                </p>
+                {% if users|length == 0 %}
+                    <h4> No users are registered. </h4>
+                {% else %}
+        			<table>
+                        <thead>
+                            <td width="50px"> # </td>
+                            <td> Name </td>
+                            <td> Roles </td>
+                            <td> Options </td>
+                        </thead>
+                        {% for user in users %}
+                        <tr>
+                            <td> {{ loop.index }} </td>
+                            <td> {{ user.name }} </td>
+                            <td> {{ user.getRolesString }} </td>
+                            <td> 
+                                {% if 'ROLE_ADMIN' in user.getRolesString %}
+                                    <a data-user-id='{{ user.id }}' class="button small make_admin_button"> Make Admin </a>
+                                {% else %}
+                                    <span><i> None </i></span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                {% endif %}
 			</article>
 		</div>
 	</div>

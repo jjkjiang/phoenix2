@@ -155,6 +155,11 @@ class User implements UserInterface, \Serializable
     {
         return array($this->role);
     }
+    
+    public function getRolesString()
+    {
+        return implode(", ", array($this->role));
+    }
 
     public function eraseCredentials()
     {
