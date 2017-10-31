@@ -18,7 +18,6 @@ class AdminController extends Controller
     public function adminHomeAction(Request $request)
     {
         return $this->render('admin/index.html.twig', [
-
         ]);
     }
 
@@ -52,6 +51,12 @@ class AdminController extends Controller
       }
 
       $user_name = $user->getName();
+      if ($user->getRole() === 'ROLE_ADMIN') {
+        return new JsonResponse([
+          'msg' => "$user_name is already an admin.",
+        ], 420);
+      }
+
       $user->setRole('ROLE_ADMIN');
       $em->persist($user);
       $em->flush();
@@ -78,6 +83,12 @@ class AdminController extends Controller
       }
 
       $user_name = $user->getName();
+      if ($user->getRole() === 'ROLE_USER') {
+        return new JsonResponse([
+          'msg' => "$user_name is already an admin.",
+        ], 420);
+      }
+
       $user->setRole('ROLE_USER');
       $em->persist($user);
       $em->flush();
