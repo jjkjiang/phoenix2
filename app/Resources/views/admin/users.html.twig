@@ -53,12 +53,16 @@
                         <tr>
                             <td> {{ loop.index }} </td>
                             <td> {{ user.name }} </td>
-                            <td> {{ user.getRolesString }} </td>
-                            <td> 
-                                {% if 'ROLE_ADMIN' in user.getRolesString %}
+                            {% if 'ROLE_ADMIN' in user.getRolesString %}
+                                <td> <b>{{ user.getRolesString }}</b> </td>
+                            {% else %}
+                                <td> {{ user.getRolesString }} </td>
+                            {% endif %}
+                            <td>
+                                {% if 'ROLE_ADMIN' not in user.getRolesString %}
                                     <a data-user-id='{{ user.id }}' class="button small make_admin_button"> Make Admin </a>
                                 {% else %}
-                                    <span><i> None </i></span>
+                                    <a data-user-id='{{ user.id }}' class="button small make_user_button"> Revoke Admin </a>
                                 {% endif %}
                             </td>
                         </tr>
@@ -69,4 +73,8 @@
 		</div>
 	</div>
 </div>
+<<<<<<< HEAD
 {% endblock body %}
+=======
+{% endblock body %}
+>>>>>>> Adding changes to allow admins to be added via web tool
