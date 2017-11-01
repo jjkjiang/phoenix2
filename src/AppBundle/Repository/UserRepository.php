@@ -36,7 +36,7 @@ class UserRepository extends EntityRepository implements UserLoaderInterface
         $query = $this->_em->createQuery($dql);
         $posts = $query->getResult();
         $authors = [];
-        foreach($posts as $post) {
+        foreach ($posts as $post) {
             array_push($authors, $post->getAuthor());
         }
         return $authors;

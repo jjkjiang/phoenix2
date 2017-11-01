@@ -24,7 +24,7 @@ class RegistrationController extends Controller
         $em = $this->get('doctrine')->getManager();
         $student = $em->getRepository('AppBundle\Entity\Student')
                       ->findOneBy(array('email' => $email));
-        
+
         // If the variable is empty, they were not in our system
         if (empty($student)) {
             // They're not in the system. Don't let them register.
@@ -41,7 +41,7 @@ class RegistrationController extends Controller
             return $this->redirectToRoute('registration');
         }
     }
-    
+
     /**
      * @Route("/pre_register", name="pre_registration")
      */
@@ -49,30 +49,30 @@ class RegistrationController extends Controller
     {
         return $this->render('registration/pre_register.html.twig');
     }
-    
+
     /**
      * @Route("/register", name="registration")
      */
     public function registerAction(Request $request)
     {
         // Make sure they're set as being allowed to register before they
-        // can register in the first place. 
+        // can register in the first place.
         $can_register = $this->get('session')->get('can_register', false);
         if (!$can_register) {
             return $this->redirectToRoute('pre_registration');
         }
-        
+
         // Get the email we stored in the session during pre-registration
         $email = $this->get('session')->get('email', '');
         if (empty($email)) {
             return $this->redirectToRoute('pre_registration');
         }
-        
+
         // Need the student object to pre-populate the form
         $em = $this->get('doctrine')->getManager();
         $student = $em->getRepository('AppBundle\Entity\Student')
                       ->findOneBy(array('email' => $email));
-        
+
         // 1) Build the form
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -81,13 +81,13 @@ class RegistrationController extends Controller
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // Extract the username from the password
+            // Extract the username from the email
             $email_array = explode('@', $user->getEmail());
             $user->setUsername($email_array[0]);
-            
+
             // Set the SID from the student sign-in
             $user->setSID($student->getStudentID());
-            
+
             // 3) Encode the password
             $password = $this->get('security.password_encoder')
                 ->encodePassword($user, $user->getPlainPassword());
@@ -99,11 +99,11 @@ class RegistrationController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
-            
+
             // Spit them back out on the homepage
             return $this->redirectToRoute('homepage');
         }
-        
+
         return $this->render('registration/register.html.twig', [
             'form' => $form->createView(),
             'student' => $student,

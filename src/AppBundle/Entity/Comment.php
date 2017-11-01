@@ -41,7 +41,8 @@ class Comment
      */
     private $post;
     
-    public function __construct() {
+    public function __construct()
+    {
         // Sets the date_posted on submit
         $this->setDatePosted(new \DateTime());
     }

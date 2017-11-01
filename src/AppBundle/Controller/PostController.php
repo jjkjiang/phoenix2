@@ -22,16 +22,16 @@ class PostController extends Controller
         $repo = $this->get('doctrine')
                      ->getManager()
                      ->getRepository('AppBundle\Entity\Post');
-        
-        
+
+
         $qb = $repo->createQueryBuilder('p');
         $posts = $qb->getQuery()->getResult();
-        
+
         return $this->render('posts/index.html.twig', [
             'posts' => $posts,
         ]);
     }
-    
+
     /**
      * @Route("/{post_id}", name="post_view", requirements={"post_id": "\d+"})
      */
@@ -40,12 +40,12 @@ class PostController extends Controller
         $em = $this->get('doctrine')->getManager();
         $post = $em->getRepository('AppBundle\Entity\Post')
                    ->findOneBy(array('id' => $post_id));
-        
+
         return $this->render('posts/index.html.twig', [
             'posts' => array($post),
         ]);
     }
-    
+
     /**
      * @Route("/new", name="new_post")
      */
@@ -53,27 +53,26 @@ class PostController extends Controller
     {
         $post = new Post();
         $form = $this->createForm(PostType::class, $post);
-        
+
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            
             $em = $this->getDoctrine()->getManager();
             $post->setAuthor($this->getUser());
             $em->persist($post);
             $em->flush();
-            
+
             $post_id = $post->getId();
-            
+
             return $this->redirectToRoute('post_view', [
                 'post_id' => $post_id,
             ]);
         }
-        
+
         return $this->render('posts/new.html.twig', [
             'form' => $form->createView(),
         ]);
     }
-    
+
     /**
      * @Route("/authors", name="authors_view")
      */
@@ -82,11 +81,12 @@ class PostController extends Controller
         $em = $this->get('doctrine')->getManager();
         $authors = $em->getRepository('AppBundle\Entity\User')
                       ->getAllAuthors();
+
         return $this->render('posts/authors.html.twig', [
             'authors' => $authors,
         ]);
     }
-    
+
     /**
      * Displays a form to edit an existing Post entity.
      *
@@ -98,7 +98,7 @@ class PostController extends Controller
         $em = $this->get('doctrine')->getManager();
         $post = $em->getRepository('AppBundle\Entity\Post')
                    ->find($post_id);
-        
+
         $deleteForm = $this->createDeleteForm($post);
         $editForm = $this->createForm('AppBundle\Form\PostType', $post);
         $editForm->handleRequest($request);
@@ -118,7 +118,7 @@ class PostController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
-    
+
     /**
      * Deletes a Post entity.
      *
@@ -130,7 +130,7 @@ class PostController extends Controller
         $em = $this->get('doctrine')->getManager();
         $post = $em->getRepository('AppBundle\Entity\Post')
                    ->findOneBy(array('id' => $post_id));
-        
+
         $form = $this->createDeleteForm($event);
         $form->handleRequest($request);
 
@@ -142,7 +142,7 @@ class PostController extends Controller
 
         return $this->redirectToRoute('posts');
     }
-    
+
     /**
      * Creates a form to delete a Post entity.
      *
@@ -154,7 +154,7 @@ class PostController extends Controller
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('post_delete', [
-               'post_id' => $post->getId(), 
+               'post_id' => $post->getId(),
             ]))
             ->setMethod('DELETE')
             ->getForm()
