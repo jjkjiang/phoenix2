@@ -52,7 +52,8 @@ class Post
      */
     private $comments;
     
-    public function __construct() {
+    public function __construct()
+    {
         // Sets the date_posted on submit
         $this->setDatePosted(new \DateTime());
         $this->comments = new ArrayCollection();

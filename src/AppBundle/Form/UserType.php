@@ -1,5 +1,5 @@
 <?php
-    
+
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
@@ -43,4 +43,4 @@ class UserType extends AbstractType
             'data_class' => 'AppBundle\Entity\User',
         ));
     }
-} 
+}

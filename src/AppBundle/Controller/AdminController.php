@@ -37,64 +37,65 @@ class AdminController extends Controller
 
     /**
      * @Route("/users/make_admin", name="admin_make_admin")
+     * @Method("POST")
      */
     public function adminMakeAdminAction(Request $request)
     {
-      $em = $this->get('doctrine')->getManager();
-      $user_id = $request->request->get('user_id');
-      $user = $em->getRepository('AppBundle\Entity\User')->find($user_id);
+        $em = $this->get('doctrine')->getManager();
+        $user_id = $request->request->get('user_id');
+        $user = $em->getRepository('AppBundle\Entity\User')->find($user_id);
 
-      if (!$user) {
+        if (!$user) {
+            return new JsonResponse([
+                'msg' => 'Could not locate user with the given id',
+            ], 400);
+        }
+
+        $user_name = $user->getName();
+        if ($user->getRole() === 'ROLE_ADMIN') {
+            return new JsonResponse([
+                'msg' => "$user_name is already an admin.",
+            ], 420);
+        }
+
+        $user->setRole('ROLE_ADMIN');
+        $em->persist($user);
+        $em->flush();
+
         return new JsonResponse([
-          'msg' => 'Could not locate user with the given id',
-        ], 400);
-      }
-
-      $user_name = $user->getName();
-      if ($user->getRole() === 'ROLE_ADMIN') {
-        return new JsonResponse([
-          'msg' => "$user_name is already an admin.",
-        ], 420);
-      }
-
-      $user->setRole('ROLE_ADMIN');
-      $em->persist($user);
-      $em->flush();
-
-      return new JsonResponse([
-        'msg' => "Added $user_name as admin.",
-      ]);
+            'msg' => "Added $user_name as admin.",
+        ]);
     }
 
     /**
      * @Route("/users/revoke_admin", name="admin_revoke_admin")
+     * @Method("POST")
      */
     public function adminRevokeAdminAction(Request $request)
     {
+        $em = $this->get('doctrine')->getManager();
+        $user_id = $request->request->get('user_id');
+        $user = $em->getRepository('AppBundle\Entity\User')->find($user_id);
 
-      $em = $this->get('doctrine')->getManager();
-      $user_id = $request->request->get('user_id');
-      $user = $em->getRepository('AppBundle\Entity\User')->find($user_id);
+        if (!$user) {
+            return new JsonResponse([
+                'msg' => 'Could not locate user with the given id',
+            ], 400);
+        }
 
-      if (!$user) {
+        $user_name = $user->getName();
+        if ($user->getRole() === 'ROLE_USER') {
+            return new JsonResponse([
+                'msg' => "$user_name is already an admin.",
+            ], 420);
+        }
+
+        $user->setRole('ROLE_USER');
+        $em->persist($user);
+        $em->flush();
+
         return new JsonResponse([
-          'msg' => 'Could not locate user with the given id',
-        ], 400);
-      }
-
-      $user_name = $user->getName();
-      if ($user->getRole() === 'ROLE_USER') {
-        return new JsonResponse([
-          'msg' => "$user_name is already an admin.",
-        ], 420);
-      }
-
-      $user->setRole('ROLE_USER');
-      $em->persist($user);
-      $em->flush();
-
-      return new JsonResponse([
-        'msg' => "Revoked admin rights from $user_name.",
-      ]);
+            'msg' => "Revoked admin rights from $user_name.",
+        ]);
     }
 }

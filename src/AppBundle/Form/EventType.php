@@ -1,5 +1,5 @@
 <?php
-    
+
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
@@ -22,7 +22,7 @@ class EventType extends AbstractType
             ->add('eventUrl', TextType::class)
             ->add('date', DateType::class, [
                 'years' => [
-                    $date->format('Y'), 
+                    $date->format('Y'),
                     (int)($date->format('Y'))+1
                 ]
             ])

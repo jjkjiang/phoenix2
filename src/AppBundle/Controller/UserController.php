@@ -15,7 +15,8 @@ use Symfony\Component\HttpFoundation\Request;
 class UserController extends Controller
 {
     /**
-     * @Route("/{username}", name="user_view", requirements={"username": "[a-z]+[0-9]+"})
+     * @Route("/{username}", name="user_view", requirements={
+     *    "username": "[a-z]+[0-9]+"})
      */
     public function userViewAction(Request $request, $username)
     {

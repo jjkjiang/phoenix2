@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity
  */
 class Student
-{   
+{
     /**
      * @ORM\Column(type="string", length=256)
      */
