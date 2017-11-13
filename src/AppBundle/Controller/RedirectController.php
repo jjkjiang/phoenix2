@@ -79,4 +79,12 @@ class RedirectController extends Controller
     {
         return $this->redirect('https://docs.google.com/forms/d/e/1FAIpQLSf4udhYICi9aVrvDxu2NAK7nLznMvcLXnxO_KR8zb0L4540CA/viewform');
     }
+
+    /**
+     * @Route("/checkin", name="checkin")
+     */
+    public function checkin(Request $request)
+    {
+        return $this->redirect('https://goo.gl/forms/TCY0AKDOvJuSNGYh1');
+    }
 }
