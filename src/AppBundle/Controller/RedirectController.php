@@ -87,4 +87,12 @@ class RedirectController extends Controller
     {
         return $this->redirect('https://goo.gl/forms/TCY0AKDOvJuSNGYh1');
     }
+
+    /**
+     * @Route("/hourofcode", name="hourofcode")
+     */
+    public function hourofcode(Request $request)
+    {
+        return $this->redirect('https://acm-ucr.github.io/hour-of-code/');
+    }
 }
