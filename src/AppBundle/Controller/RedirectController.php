@@ -95,4 +95,12 @@ class RedirectController extends Controller
     {
         return $this->redirect('https://acm-ucr.github.io/hour-of-code/');
     }
+
+    /**
+     * @Route("/python", name="python")
+     */
+    public function python(Request $request)
+    {
+        return $this->redirect('https://docs.google.com/forms/d/e/1FAIpQLSccB64QiKyMMnD2TBIEE9N4Wiqre1LBiTf8dDV53ccBk_kgSw/viewform');
+    }
 }
