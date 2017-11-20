@@ -111,4 +111,12 @@ class RedirectController extends Controller
     {
         return $this->redirect('https://gist.github.com/aarohmankad/b5a2fdee10e311c02aaf1cd57aebbc16');
     }
+
+    /**
+     * @Route("/vimrc", name="vimrc")
+     */
+    public function vimrc(Request $request)
+    {
+        return $this->redirect('https://gist.github.com/aarohmankad/ef93e60f70cbbd83148f2d21aac41da4');
+    }
 }
