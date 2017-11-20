@@ -103,4 +103,12 @@ class RedirectController extends Controller
     {
         return $this->redirect('https://docs.google.com/forms/d/e/1FAIpQLSccB64QiKyMMnD2TBIEE9N4Wiqre1LBiTf8dDV53ccBk_kgSw/viewform');
     }
+
+    /**
+     * @Route("/bashrc", name="bashrc")
+     */
+    public function bashrc(Request $request)
+    {
+        return $this->redirect('https://gist.github.com/aarohmankad/b5a2fdee10e311c02aaf1cd57aebbc16');
+    }
 }
