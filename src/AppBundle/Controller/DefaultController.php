@@ -69,4 +69,12 @@ class DefaultController extends Controller
     {
         return $this->render('default/activities.html.twig');
     }
+
+    /**
+     * @Route("/icpc", name="icpc")
+     */
+    public function icpcAction(Request $request)
+    {
+        return $this->render('default/icpc.html.twig');
+    }
 }
