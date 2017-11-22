@@ -119,4 +119,12 @@ class RedirectController extends Controller
     {
         return $this->redirect('https://gist.github.com/aarohmankad/ef93e60f70cbbd83148f2d21aac41da4');
     }
+
+    /**
+     * @Route("/slack", name="slack")
+     */
+    public function slack(Request $request)
+    {
+        return $this->redirect('https://join.slack.com/t/acm-ucr/shared_invite/enQtMjc2NTE2MDU1ODEwLThhYzUwYzQ4N2E1NWM0NDY1OTVkNTE1NzM4YjU4YjRjMmJiZDY1YzY2NTBjNmNiYjU0NTQxZDMwY2U4MDc4YmM');
+    }
 }
