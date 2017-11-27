@@ -143,4 +143,12 @@ class RedirectController extends Controller
     {
         return $this->redirect('https://docs.google.com/forms/d/e/1FAIpQLSezoQwb0MUBA1Q3ikn8z2_GNM9IcRQ5HZ3HIiSiPvYx1WYdQg/viewform');
     }
+
+    /**
+     * @Route("/raspberry", name="raspberry")
+     */
+    public function raspberry(Request $request)
+    {
+        return $this->redirect('http://bit.ly/2ACt7jA');
+    }
 }
