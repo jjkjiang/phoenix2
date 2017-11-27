@@ -135,4 +135,12 @@ class RedirectController extends Controller
     {
         return $this->redirect('https://goo.gl/forms/nN3aZGM3LHZXwLsu1');
     }
+
+    /**
+     * @Route("/mixer", name="mixer")
+     */
+    public function mixer(Request $request)
+    {
+        return $this->redirect('https://docs.google.com/forms/d/e/1FAIpQLSezoQwb0MUBA1Q3ikn8z2_GNM9IcRQ5HZ3HIiSiPvYx1WYdQg/viewform');
+    }
 }
