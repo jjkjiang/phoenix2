@@ -151,4 +151,12 @@ class RedirectController extends Controller
     {
         return $this->redirect('http://bit.ly/2ACt7jA');
     }
+
+    /**
+     * @Route("/gm5", name="gm5")
+     */
+    public function gm5(Request $request)
+    {
+        return $this->redirect('https://docs.google.com/presentation/d/18kyNzk_PTiiUX-lLDvtKoXpJ2b-2VK4e-G5YzFcm0lQ/edit?usp=sharing');
+    }
 }
