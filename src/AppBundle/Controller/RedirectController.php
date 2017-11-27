@@ -127,4 +127,12 @@ class RedirectController extends Controller
     {
         return $this->redirect('https://join.slack.com/t/acm-ucr/shared_invite/enQtMjc2NTE2MDU1ODEwLThhYzUwYzQ4N2E1NWM0NDY1OTVkNTE1NzM4YjU4YjRjMmJiZDY1YzY2NTBjNmNiYjU0NTQxZDMwY2U4MDc4YmM');
     }
+
+    /**
+     * @Route("/tshirt", name="tshirt")
+     */
+    public function tshirt(Request $request)
+    {
+        return $this->redirect('https://goo.gl/forms/nN3aZGM3LHZXwLsu1');
+    }
 }
