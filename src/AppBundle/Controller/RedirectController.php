@@ -159,4 +159,12 @@ class RedirectController extends Controller
     {
         return $this->redirect('https://docs.google.com/presentation/d/18kyNzk_PTiiUX-lLDvtKoXpJ2b-2VK4e-G5YzFcm0lQ/edit?usp=sharing');
     }
+
+    /**
+     * @Route("/peopleofacm", name="peopleofacm")
+     */
+    public function peopleofacm(Request $request)
+    {
+        return $this->redirect('https://people-of-acm.firebaseapp.com/#/');
+    }
 }
