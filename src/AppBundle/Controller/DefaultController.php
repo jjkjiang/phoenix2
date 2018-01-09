@@ -14,8 +14,6 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-
-
         // Pagination
         $PAGE_SIZE = 5;
         $page = $request->query->get('page', 0);
