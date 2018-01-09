@@ -18,7 +18,7 @@ class DefaultController extends Controller
         $PAGE_SIZE = 5;
         $page = $request->query->get('page', 0);
         if ($page !== null && (!is_numeric($page) || $page < 0)) {
-						throw new HttpException(400, "Page is invalid.");
+            throw new HttpException(400, "Page is invalid.");
         }
 
         // Get the posts
@@ -29,17 +29,17 @@ class DefaultController extends Controller
         $qb->orderBy('p.datePosted', 'DESC');
         $offset = 0;
         if ($page !== null && $page > 0) {
-						$offset = $page * $PAGE_SIZE;
-						$qb->setFirstResult($offset);
+            $offset = $page * $PAGE_SIZE;
+            $qb->setFirstResult($offset);
         }
         $qb->setMaxResults($PAGE_SIZE);
         $posts = $qb->getQuery()->getResult();
 
         // Get total count of posts
-				$query = $repo->createQueryBuilder('p')
-						->select('COUNT(p.id)')
-						->getQuery();
-				$total_posts = $query->getSingleScalarResult();
+        $query = $repo->createQueryBuilder('p')
+            ->select('COUNT(p.id)')
+            ->getQuery();
+        $total_posts = $query->getSingleScalarResult();
 
         $has_more_pages = ($total_posts - $offset) > $PAGE_SIZE;
 
