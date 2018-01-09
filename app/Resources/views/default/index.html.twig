@@ -5,140 +5,139 @@
 {% endblock %}
 
 {% block head %}
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="{{ asset('js/index/ie/html5shiv.js') }}"></script><![endif]-->
 {% endblock %}
 
 {% block stylesheets %}
-	<link rel="stylesheet" href="{{ asset('css/index/main.css') }}" />
-	<!--[if lte IE 9]><link rel="stylesheet" href="{{ asset('css/index/ie9.css') }}" /><![endif]-->
-	<!--[if lte IE 8]><link rel="stylesheet" href="{{ asset('css/index/ie8.css') }}" /><![endif]-->
+  <link rel="stylesheet" href="{{ asset('css/index/main.css') }}" />
+  <!--[if lte IE 9]><link rel="stylesheet" href="{{ asset('css/index/ie9.css') }}" /><![endif]-->
+  <!--[if lte IE 8]><link rel="stylesheet" href="{{ asset('css/index/ie8.css') }}" /><![endif]-->
 {% endblock %}
 
 {% block javascripts %}
     <!-- Scripts -->
-	<script src="{{ asset('js/index/skel.min.js') }}"></script>
-	<script src="{{ asset('js/index/util.js') }}"></script>
-	<!--[if lte IE 8]><script src="{{ asset('js/index/ie/respond.min.js') }}"></script><![endif]-->
-	<script src="{{ asset('js/index/main.js') }}"></script>
+  <script src="{{ asset('js/index/skel.min.js') }}"></script>
+  <script src="{{ asset('js/index/util.js') }}"></script>
+  <!--[if lte IE 8]><script src="{{ asset('js/index/ie/respond.min.js') }}"></script><![endif]-->
+  <script src="{{ asset('js/index/main.js') }}"></script>
 {% endblock %}
 
 {% block body %}
-    <!-- Wrapper -->
-    <div id="wrapper">
-    	{% include 'components/header.html.twig' %}
+<!-- Wrapper -->
+<div id="wrapper">
+    {% include 'components/header.html.twig' %}
 
-    	{% include 'components/menu.html.twig' %}
+    {% include 'components/menu.html.twig' %}
 
-    	<!-- Main -->
-    	<div id="main">
+    <!-- Main -->
+    <div id="main">
+        {% if posts|length == 0 %}
+            <h2> No posts found! </h2>
+        {% endif %}
 
-            {% if posts|length == 0 %}
-                <h2> No posts found! </h2>
-            {% endif %}
+        <!-- Post -->
+        {% for post in posts %}
+        <article class="post">
+            <header>
+                <div class="title">
+                    <a href="{{ path('post_view', { 'post_id' : post.id }) }}">
+                        <h2>{{ post.title }}</h2>
+                    </a>
+                    <p>{{ post.subtitle|default('')}}</p>
+                </div>
+                <div class="meta">
+                    <time class="published" datetime="{{ post.datePosted|date("Y-m-d") }}"> {{ post.datePosted | date("d M Y")}}</time>
+                    <a href="#" class="author">
+                        <span class="name"> {{ post.author.name }}</span>
+                        <img src="{{ asset( post.author.profilePhoto ) }}" alt="" />
+                    </a>
+                </div>
+            </header>
+            <p>
+                {{ post.body | markdown }}
+            </p>
+            <footer>
+                <ul class="stats">
+                    <li>
+                        <a
+                            href="{{ path('post_view', { 'post_id' : post.id }) }}"
+                            class="icon fa-comment">
+                            {{ post.comments|length }} Comments
+                        </a>
+                    </li>
+                </ul>
+            </footer>
+        </article>
+        {% endfor %}
 
-    		<!-- Post -->
-            {% for post in posts %}
-        		<article class="post">
-        			<header>
-        				<div class="title">
-                            <a href="{{ path('post_view', { 'post_id' : post.id }) }}">
-                                <h2>{{ post.title }}</h2>
-                            </a>
-        					<p>{{ post.subtitle|default('')}}</p>
-        				</div>
-        				<div class="meta">
-        					<time class="published" datetime="{{ post.datePosted|date("Y-m-d") }}"> {{ post.datePosted | date("d M Y")}}</time>
-        					<a href="#" class="author">
-                                <span class="name"> {{ post.author.name }}</span>
-                                <img src="{{ asset( post.author.profilePhoto ) }}" alt="" />
-                            </a>
-        				</div>
-        			</header>
-        			<p>
-                        {{ post.body | markdown }}
-                    </p>
-        			<footer>
-        				<ul class="stats">
-        					<li>
-                                <a
-                                    href="{{ path('post_view', { 'post_id' : post.id }) }}"
-                                    class="icon fa-comment">
-                                    {{ post.comments|length }} Comments
-                                </a>
-                            </li>
-        				</ul>
-        			</footer>
-        		</article>
-            {% endfor %}
-
-    		<!-- Pagination -->
-    		<ul class="actions pagination">
-    			<li><a href="{% if current_page >= 0 %}{{ path('homepage', { 'page' : current_page-1 }) }}{% else %}#{% endif %}" class="{% if current_page < 1 %}disabled {% endif %} button big previous">Previous Page</a></li>
-    			<li><a href="{% if has_more_pages %} {{ path('homepage', { 'page' : current_page+1 }) }}{% else %}#{% endif %}" class="{% if not has_more_pages %} disabled {% endif %} button big next">Next Page</a></li>
-    		</ul>
-
-    	</div>
-
-    	<!-- Sidebar -->
-    	<section id="sidebar">
-    		<!-- Intro -->
-    		<section id="intro">
-    			<a href="#" class="logo">
-                    <img src="{{ asset('img/acm_ucr.png') }}" alt="" />
-                </a>
-    			<header>
-    				<h2>ACM at UCR</h2>
-    				<p>
-                        The Association for Computing Machinery at
-                        University of California, Riverside
-                    </p>
-    			</header>
-    		</section>
-
-    		<!-- Upcoming Events -->
-    		<section>
-    			<header>
-    				<h2>Upcoming Events</h2>
-    			</header>
-    			<ul class="posts">
-                    {% for event in events %}
-    				<li>
-    					<article>
-    						<header>
-    							<h3><a href="{{ path('event_view', { 'event_id' : event.id }) }}">{{ event.title }}</a></h3>
-    							<time class="published" datetime="{{ event.date|date("Y-m-d") }}"> {{ event.date | date("d M Y")}}</time>
-    						</header>
-    						<a href="{{ path('event_view', { 'event_id' : event.id }) }}" class="image"><img src="{{ asset(event.image) }}" alt="" /></a>
-    					</article>
-    				</li>
-                    {% endfor %}
-    			</ul>
-    		</section>
-
-    		<!-- About -->
-    		<section class="blurb">
-    			<h2>About</h2>
-    			<p>
-                    ACM at UCR is a professional student organization focused on
-                    Computer Science and Engineering.
-                    We help students develop the technical and communication skills
-                    they need to get a job in industry.
-                    Our mission is to help students succeed in getting the
-                    opportunity for an internship or a full time job by offering
-                    workshops and events aimed towards that goal.
-                </p>
-    			<ul class="actions">
-    				<li><a href="{{ path('about') }}" class="button">Learn More</a></li>
-    			</ul>
-    		</section>
-    		<!-- Sponsors -->
-    		<section class="blurb">
-    			<h2>Sponsors</h2>
-                <a style="border-bottom:0px;" href="http://get.tech/"><img src="https://www.dynadot.com/domain/logo/tech-logo1433520679.png"></a>
-    		</section>
-            {% include 'components/footer.html.twig' %}
-    	</section>
+        <!-- Pagination -->
+        <ul class="actions pagination">
+            <li><a href="{% if current_page >= 0 %}{{ path('homepage', { 'page' : current_page-1 }) }}{% else %}#{% endif %}" class="{% if current_page < 1 %}disabled {% endif %} button big previous">Previous Page</a></li>
+            <li><a href="{% if has_more_pages %} {{ path('homepage', { 'page' : current_page+1 }) }}{% else %}#{% endif %}" class="{% if not has_more_pages %} disabled {% endif %} button big next">Next Page</a></li>
+        </ul>
     </div>
+
+    <!-- Sidebar -->
+    <section id="sidebar">
+        <!-- Intro -->
+        <section id="intro">
+            <a href="#" class="logo">
+                <img src="{{ asset('img/acm_ucr.png') }}" alt="" />
+            </a>
+            <header>
+                <h2>ACM at UCR</h2>
+                <p>
+                      The Association for Computing Machinery at
+                      University of California, Riverside
+                </p>
+            </header>
+        </section>
+
+        <!-- Upcoming Events -->
+        <section>
+            <header>
+                <h2>Upcoming Events</h2>
+            </header>
+            <ul class="posts">
+            {% for event in events %}
+            <li>
+                <article>
+                    <header>
+                        <h3><a href="{{ path('event_view', { 'event_id' : event.id }) }}">{{ event.title }}</a></h3>
+                        <time class="published" datetime="{{ event.date|date("Y-m-d") }}"> {{ event.date | date("d M Y")}}</time>
+                    </header>
+                    <a href="{{ path('event_view', { 'event_id' : event.id }) }}" class="image"><img src="{{ asset(event.image) }}" alt="" /></a>
+                </article>
+            </li>
+            {% endfor %}
+            </ul>
+        </section>
+
+        <!-- About -->
+        <section class="blurb">
+            <h2>About</h2>
+            <p>
+                ACM at UCR is a professional student organization focused on
+                Computer Science and Engineering.
+                We help students develop the technical and communication skills
+                they need to get a job in industry.
+                Our mission is to help students succeed in getting the
+                opportunity for an internship or a full time job by offering
+                workshops and events aimed towards that goal.
+            </p>
+            <ul class="actions">
+                <li><a href="{{ path('about') }}" class="button">Learn More</a></li>
+            </ul>
+        </section>
+
+        <!-- Sponsors -->
+        <section class="blurb">
+            <h2>Sponsors</h2>
+              <a style="border-bottom:0px;" href="http://get.tech/"><img src="https://www.dynadot.com/domain/logo/tech-logo1433520679.png"></a>
+        </section>
+        {% include 'components/footer.html.twig' %}
+    </section>
+</div>
 {% endblock %}
