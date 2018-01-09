@@ -34,6 +34,10 @@
     	<!-- Main -->
     	<div id="main">
 
+            {% if posts|length == 0 %}
+                <h2> No posts found! </h2>
+            {% endif %}
+
     		<!-- Post -->
             {% for post in posts %}
         		<article class="post">
@@ -58,7 +62,7 @@
         			<footer>
         				<ul class="stats">
         					<li>
-                                <a 
+                                <a
                                     href="{{ path('post_view', { 'post_id' : post.id }) }}"
                                     class="icon fa-comment">
                                     {{ post.comments|length }} Comments
@@ -71,8 +75,8 @@
 
     		<!-- Pagination -->
     		<ul class="actions pagination">
-    			<li><a href="" class="disabled button big previous">Previous Page</a></li>
-    			<li><a href="#" class="button big next">Next Page</a></li>
+    			<li><a href="{% if current_page >= 0 %}{{ path('homepage', { 'page' : current_page-1 }) }}{% else %}#{% endif %}" class="{% if current_page < 1 %}disabled {% endif %} button big previous">Previous Page</a></li>
+    			<li><a href="{% if has_more_pages %} {{ path('homepage', { 'page' : current_page+1 }) }}{% else %}#{% endif %}" class="{% if not has_more_pages %} disabled {% endif %} button big next">Next Page</a></li>
     		</ul>
 
     	</div>
@@ -87,7 +91,7 @@
     			<header>
     				<h2>ACM at UCR</h2>
     				<p>
-                        The Association for Computing Machinery at 
+                        The Association for Computing Machinery at
                         University of California, Riverside
                     </p>
     			</header>
@@ -117,12 +121,12 @@
     		<section class="blurb">
     			<h2>About</h2>
     			<p>
-                    ACM at UCR is a professional student organization focused on 
-                    Computer Science and Engineering. 
-                    We help students develop the technical and communication skills 
-                    they need to get a job in industry. 
-                    Our mission is to help students succeed in getting the 
-                    opportunity for an internship or a full time job by offering 
+                    ACM at UCR is a professional student organization focused on
+                    Computer Science and Engineering.
+                    We help students develop the technical and communication skills
+                    they need to get a job in industry.
+                    Our mission is to help students succeed in getting the
+                    opportunity for an internship or a full time job by offering
                     workshops and events aimed towards that goal.
                 </p>
     			<ul class="actions">
