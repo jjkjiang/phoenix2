@@ -175,4 +175,12 @@ class RedirectController extends Controller
     {
         return $this->redirect('https://m.me/join/AbZhz8-NbCaxhCyU');
     }
+
+    /**
+     * @Route("/dodgeball", name="dodgeball")
+     */
+    public function dodgeball(Request $request)
+    {
+        return $this->redirect('https://goo.gl/forms/MGFjnPfvDdgSHd793');
+    }
 }
