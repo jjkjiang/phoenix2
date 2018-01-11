@@ -167,4 +167,12 @@ class RedirectController extends Controller
     {
         return $this->redirect('https://people-of-acm.firebaseapp.com/#/');
     }
+
+    /**
+     * @Route("/msg", name="msg")
+     */
+    public function msg(Request $request)
+    {
+        return $this->redirect('https://m.me/join/AbZhz8-NbCaxhCyU');
+    }
 }
