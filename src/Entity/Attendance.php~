@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * @ORM\Table(name="attendance")
+ * @ORM\Entity
+ */
+class Attendance
+{
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Student", inversedBy="events")
+     * @ORM\JoinColumn(name="student_card_number", referencedColumnName="card_number")
+     */
+    private $attendee;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Event", inversedBy="attendees")
+     * @ORM\JoinColumn(name="event_id", referencedColumnName="id")
+     */
+    private $event;
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}
