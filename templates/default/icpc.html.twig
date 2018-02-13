@@ -129,7 +129,7 @@
 								N*P > T, then the number of solutions is 0. This is because the total number of marks in each bucket exceeds
 								the marks needed (T). </li>
 								<li> If N * P == T, then the number of solutions is 1 because there is only 1 solution such that
-								there are P marks in N buckets that equals the total number of marks(T). Now for N*P < T, the number of 
+								there are P marks in N buckets that equals the total number of marks(T). Now for N*P &lt T, the number of 
 								marks for each bucket is satisfied, but we still need to distribute more marks to meet the total 
 								number of marks(T). The number of points we need to distribute, x, to each bucket is (N*P) - T. We can 
 								distribute x into N buckets. Thus the total number of solutions is the number of ways to distribute x 
@@ -160,6 +160,7 @@
 								<li>A naive approach would be to calculate distances of all of them and take the minimum,
 								which is O(n^2). This, unfortunately, times out - 100,000 points overwhelms this easily. </li>
 								<li>We can reduce this with two different methods to O(nlog(n)).</li>
+								<li><img src="https://www.geeksforgeeks.org/wp-content/uploads/strip_closesr1.png"></img></li>
 								<li>The first method is to use Divide and Conquer to minimalize the amount of comparisons
 								we need to make.</li>
 								<li>Begin by sorting the points by their X values, using a set or a sort function. O(nlog(n))</li>
@@ -170,12 +171,13 @@
 								<li>To make this O(nlog(n)), sort these values by their y values when making comparisons, and 
 								stop comparisons when the difference in y is over d. There is a proof that this makes comparisons
 								O(n), as the inner loop for comparisons will only actually compare at most 6 values.</li>
+								<li><img src="https://www.cs.mcgill.ca/~cs251/ClosestPair/figure4.1.gif"></img></li>
 								<li>The other solution is somewhat similar - it uses a sweep-line algorithm </li>
 								<li>Sort the points by their x value. </li>
 								<li>Move right, and as you move right, keep a set of values you've seen so far sorted by y. </li>
 								<li>As you find new values, compare it to everything in the set. Every iteration, remove points that
 								are larger than the smallest value d by x distance alone. </li>
-								<li>By using the property of this smaller set being sorted by y the same way we used it in the D&C
+								<li>By using the property of this smaller set being sorted by y the same way we used it in the D&ampC
 								solution, we make at most 6 comparisons at a time! </li>
 								<li>This algorithm is also O(nlog(n)), and both will work for the N = 100,000 case.</li>
 							</ul>
