@@ -14,6 +14,12 @@
 	<link rel="stylesheet" href="{{ asset('css/index/main.css') }}" />
 	<!--[if lte IE 9]><link rel="stylesheet" href="{{ asset('css/index/ie9.css') }}" /><![endif]-->
 	<!--[if lte IE 8]><link rel="stylesheet" href="{{ asset('css/index/ie8.css') }}" /><![endif]-->
+	<style>
+		.collapsable-container .content {
+ 			display: none;
+    			padding : 5px;
+		}
+	</style>
 {% endblock %}
 
 {% block javascripts %}
@@ -22,6 +28,22 @@
 	<script src="{{ asset('js/index/util.js') }}"></script>
 	<!--[if lte IE 8]><script src="{{ asset('js/index/ie/respond.min.js') }}"></script><![endif]-->
 	<script src="{{ asset('js/index/main.js') }}"></script>
+	<script>
+	$(".collapsable-container").click(function () {
+		$collapsable-header = $(this);
+		//getting the next element
+		$collapsable-content = $collapsable-header.next();
+		//open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+		$collapsable-content.slideToggle(500, function () {
+		//execute this after slideToggle is done
+		//change text of header based on visibility of content div
+		$collapsable-header.text(function () {
+		    //change text based on condition
+		    return $content.is(":visible") ? "Collapse" : "Expand";
+		});
+	});
+
+});</script>
 {% endblock %}
 
 {% block body %}
@@ -39,11 +61,127 @@
 				<p> Meeting on Mondays from 9:00 AM - Noon </p>
 				<p> For the Stanford weeks, make sure to read the lecture notes and solve as many questions as you can! </p>
 				
-				<h2>Week 1</h2>
+				<h2>Weeks 1-10</h2>
 				<h3>Both Divs</h3>
 				<ul>
-					<li><a href="http://web.stanford.edu/class/cs97si/">Introduction Lecture Notes + Coding Exercise problems</a>
+					<li><a href="http://web.stanford.edu/class/cs97si/">Lecture Notes + Coding Exercise problems</a></li>
 				</ul>
+				
+				<h2>UCRPC</h2>
+				<h3>Contest</h3>
+				<ul>
+					<li><a href="https://uhunt.onlinejudge.org/vcontest/0697b12ef57ae7ea1e3a2b31eee3cf0b">Link</a></li>
+				</ul>
+				<h3>Team "I am the ACM room" Solutions</h3>
+				<div class="collapsable-container">
+					<div class="collapsable-header">
+						<span>Click to Show</span>
+					</div>
+					
+					<div class="collapsable-content">
+						<ul>
+							<li>What is the frequency Kenneth?</li>
+							<ul>
+								<li>This question is an example of a question that's more confusing than it needs to be.
+								Ignoring the story, the question is actually really straightforward. </li>
+								<li>Create a map of letters to frequencies</li>
+								<li>Alternatively, create an array of pairs of size 26+26 (why does this number work?) </li>
+								<li>Determine the top frequencies </li>
+								<li>Sort the letters so they appear in order as per requirements </li>
+							</ul>
+							<li>Back to Intermediate Math</li>
+							<ul>
+								<li>This question is exactly the title implies, intermediate math</li>
+								<li>You want to find the difference between the time it takes to go in a 
+								straight line across versus the fastest time possible. Lets find the easier
+								one first, the fastest distance time. </li>
+								<li>One may be tempted to overthink this, but if you recall from physics,
+								it turns out that going straight across is the easiest way. While we are
+								getting pushed down the river, it doesn't affect our horizontal velocity
+								at all. So, we calculate d / u to end up with one of the times.</li>
+								<li>The other time is a bit more complicated to handle - to get a straight
+								line across, we need to push diagonally against the river such that the vertical
+								component of our velocity vector directly goes against the river. Graphing this
+								out below, we see that we must use some high school math.</li>
+								<li><img>todo put stuff in later</img></li>
+								<li>Note: This means that if u >= v, it is physically impossible to cross like
+								this!</li>
+								<li>One way to do it is to use trig identities to find theta, and then do the
+								same again to find w, the horizontal velocity of our river. </li>
+								<li>You can also abuse the pythagorean theorem, since the force of the river is
+								always prependicular to the vector you want to find, so you are guaranteed that it
+								is a right triangle. Do note that it may be slightly less efficient due to square
+								rooting (the bane of competitive programming!)</li>
+								<li>Once we have w, we do the same step as before, then take the absolute difference
+								of their differences to arrive at our answer. Be careful of precision when outputting</li>
+							</ul>
+							<li>Marks Distribution</li>
+							<ul>
+								<li>This is a combinatorics problem that can either be interpreted as a straight math problem
+								or a Dynamic Programming question. </li>
+								<li>For the DP solution, note that the recursive solution can be found by sum of F(N-1, T-i, P)
+								where i is between P and T - (N*P) + P. The base case is at F(0,0,P), which is 1.</li>
+								<li>This will time out without memoization - note that subtrees repeat, especially when N is high.
+								Therefore, let us memoize with dp[N][T] = combinations leading up to subtree at the end of each
+								return. This leads to enough saved work to complete fairly quickly even in python.</li>
+								<li>For the math solution, we can think of the number of subjects as the number of buckets. In each bucket
+								we need at least P marks. If we have N buckets with P marks in each of them, we have N * P marks total. If
+								N*P > T, then the number of solutions is 0. This is because the total number of marks in each bucket exceeds
+								the marks needed (T). </li>
+								<li> If N * P == T, then the number of solutions is 1 because there is only 1 solution such that
+								there are P marks in N buckets that equals the total number of marks(T). Now for N*P < T, the number of 
+								marks for each bucket is satisfied, but we still need to distribute more marks to meet the total 
+								number of marks(T). The number of points we need to distribute, x, to each bucket is (N*P) - T. We can 
+								distribute x into N buckets. Thus the total number of solutions is the number of ways to distribute x 
+								into N buckets which is (x + n - 1)!/ (x! * (n-1)!) </li>
+							</ul>
+
+							<li>Anne's Game</li>
+							<ul>
+								<li>Note that this question is more or less asking, how many unique orderings
+								of trees are possible given nodes 1....n since there is n-1 edges.</li>
+								<li>A common mistake would be trying to use the Catalan numbers - things are
+								a bit different since these are not guaranteed to be binary trees. </li>
+								<li>The answer by Cayley's Formula is n^(n-2)</li>
+								<li>If you are curious why this is, a proof based on prufer sequences is provided 
+								below. Otherwise, this is a good argument to bring reference manuals with you to
+								contests like ICPC and to practice regularly to find out about shortcuts like this.</li>
+								<li><a href="https://www.math.uchicago.edu/~may/VIGRE/VIGRE2006/PAPERS/Casarotto.pdf">Proof</a></li>
+							</ul>
+
+							<li>Bey Battle</li>
+							<ul>
+								<li></li>
+								<li>We can see that for the basic solution of two points, we only care about the maximum of the distance
+								between either the X or Y values of the points. It turns out that this is always the best way to draw a
+								square that is maximal.</li>
+								<li>For many points, we can use some trial and error to find that we are only interested in the minimum of
+								these distances.</li>
+								<li>A naive approach would be to calculate distances of all of them and take the minimum,
+								which is O(n^2). This, unfortunately, times out - 100,000 points overwhelms this easily. </li>
+								<li>We can reduce this with two different methods to O(nlog(n)).</li>
+								<li>The first method is to use Divide and Conquer to minimalize the amount of comparisons
+								we need to make.</li>
+								<li>Begin by sorting the points by their X values, using a set or a sort function. O(nlog(n))</li>
+								<li>Recur over both sides to find the shortest distances on each side. Then, given 
+								the minimum of the two, use that to find all X values that are at most d away from 
+								the current point's X.</li>
+								<li>Compare the points in this gap, and compare that to the current d for your return value.</li>
+								<li>To make this O(nlog(n)), sort these values by their y values when making comparisons, and 
+								stop comparisons when the difference in y is over d. There is a proof that this makes comparisons
+								O(n), as the inner loop for comparisons will only actually compare at most 6 values.</li>
+								<li>The other solution is somewhat similar - it uses a sweep-line algorithm </li>
+								<li>Sort the points by their x value. </li>
+								<li>Move right, and as you move right, keep a set of values you've seen so far sorted by y. </li>
+								<li>As you find new values, compare it to everything in the set. Every iteration, remove points that
+								are larger than the smallest value d by x distance alone. </li>
+								<li>By using the property of this smaller set being sorted by y the same way we used it in the D&C
+								solution, we make at most 6 comparisons at a time! </li>
+								<li>This algorithm is also O(nlog(n)), and both will work for the N = 100,000 case.</li>
+							</ul>
+						</ul>
+					</div>
+				</div>
 			</article>
 			
 			<article class="post">
