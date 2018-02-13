@@ -30,14 +30,14 @@
 	<script src="{{ asset('js/index/main.js') }}"></script>
 	<script>
 	$(".collapsable-container").click(function () {
-		$collapsable-header = $(this);
+		$header = $(this);
 		//getting the next element
-		$collapsable-content = $collapsable-header.next();
+		$content = $header.next();
 		//open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
-		$collapsable-content.slideToggle(500, function () {
+		$content.slideToggle(500, function () {
 		//execute this after slideToggle is done
 		//change text of header based on visibility of content div
-		$collapsable-header.text(function () {
+		$header.text(function () {
 		    //change text based on condition
 		    return $content.is(":visible") ? "Collapse" : "Expand";
 		});
@@ -74,11 +74,11 @@
 				</ul>
 				<h3>Team "I am the ACM room" Solutions</h3>
 				<div class="collapsable-container">
-					<div class="collapsable-header">
+					<div class="header">
 						<span>Click to Show</span>
 					</div>
 					
-					<div class="collapsable-content">
+					<div class="content">
 						<ul>
 							<li>What is the frequency Kenneth?</li>
 							<ul>
