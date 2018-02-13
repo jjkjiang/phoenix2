@@ -129,7 +129,7 @@
 								N*P > T, then the number of solutions is 0. This is because the total number of marks in each bucket exceeds
 								the marks needed (T). </li>
 								<li> If N * P == T, then the number of solutions is 1 because there is only 1 solution such that
-								there are P marks in N buckets that equals the total number of marks(T). Now for N*P &lt T, the number of 
+								there are P marks in N buckets that equals the total number of marks(T). Now for N*P &lt; T, the number of 
 								marks for each bucket is satisfied, but we still need to distribute more marks to meet the total 
 								number of marks(T). The number of points we need to distribute, x, to each bucket is (N*P) - T. We can 
 								distribute x into N buckets. Thus the total number of solutions is the number of ways to distribute x 
@@ -177,7 +177,7 @@
 								<li>Move right, and as you move right, keep a set of values you've seen so far sorted by y. </li>
 								<li>As you find new values, compare it to everything in the set. Every iteration, remove points that
 								are larger than the smallest value d by x distance alone. </li>
-								<li>By using the property of this smaller set being sorted by y the same way we used it in the D&ampC
+								<li>By using the property of this smaller set being sorted by y the same way we used it in the D&amp;C
 								solution, we make at most 6 comparisons at a time! </li>
 								<li>This algorithm is also O(nlog(n)), and both will work for the N = 100,000 case.</li>
 							</ul>
